@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function check_available {
+    command -v "$1" &> /dev/null || {
+        (1>&2 echo "'$1' is not available. Exiting.")
+        exit 1
+    }
+}
+
+check_available webpack
+
+webpack --watch

@@ -1,0 +1,37 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+    ],
+    "jsRules": true,
+    "rules": {
+      "no-unused-variable": {
+        "severity": "warning"
+      },
+      "no-unused-expression": {
+        "severity": "warning"
+      },
+      "prefer-const": {
+        "severity": "warning"
+      },
+      "new-parens": {
+        "severity": "warning"
+      },
+      "interface-name": {
+        "severity": "warning",
+        "options": "never-prefix"
+      },
+      "one-variable-per-declaration": {
+        "severity": "off"
+      },
+      "member-access": {
+        "severity": "warning",
+        "options": ["check-accessor", "check-constructor"]
+      },
+      "trailing-comma": {
+          "severity": "warning",
+          "options": {"multiline": "always", "singleline": "never"}
+      }
+    },
+    "rulesDirectory": []
+}
