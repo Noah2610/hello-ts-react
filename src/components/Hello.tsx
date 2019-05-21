@@ -1,13 +1,13 @@
 import * as React from "react";
 import { ReactElement } from "react";
 
-export interface HelloProps {
+export interface IHelloProps {
     compiler: string;
     framework: string;
 }
 
-export class Hello extends React.Component<HelloProps, {}> {
-    public constructor(props: HelloProps) {
+export class Hello extends React.Component<IHelloProps, {}> {
+    public constructor(props: IHelloProps) {
         super(props);
     }
 

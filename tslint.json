@@ -22,8 +22,8 @@
             "severity": "warning"
         },
         "interface-name": {
-            "severity": "warning",
-            "options": "never-prefix"
+            "severity": "error",
+            "options": "always-prefix"
         },
         "one-variable-per-declaration": {
             "severity": "off"
@@ -48,6 +48,13 @@
                 "module-source-path": "full",
                 "grouped-imports": true
             }
+        },
+        "only-arrow-functions": {
+            "severity": "warning"
+        },
+        "array-type": {
+            "severity": "error",
+            "options": "generic"
         }
     },
     "rulesDirectory": []

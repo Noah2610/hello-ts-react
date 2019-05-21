@@ -1,5 +1,5 @@
-import * as _React from "react";
 import { ReactElement as _ReactElement } from "react";
+import * as _React from "react";
 import * as _ReactDOM from "react-dom";
 
 export const React = _React;
