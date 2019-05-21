@@ -1,38 +1,35 @@
 import { combineReducers, createStore, Store } from "redux";
 
 import { IAction, IRunnerAction } from "./actions";
-import { IState, State } from "./state";
+import { IState, TodoAppState } from "./state";
 
-const baseReducer = (
-    state: IState = initialState(),
-    action: IAction,
-): IState => {
-    return state;
-};
+const REDUX_ACTION_TYPE_PREFIX = "@@";
 
-const runnerReducer = (
-    state: IState = initialState(),
-    action: IRunnerAction,
-): IState => {
-    if (action.run) {
+const isReduxAction = (action: IAction): boolean =>
+    action.type.startsWith(REDUX_ACTION_TYPE_PREFIX);
+
+const reducers = {
+    todoApp: (
+        state: TodoAppState = initialTodoAppState(),
+        action: IRunnerAction,
+    ): TodoAppState => {
+        if (isReduxAction(action)) {
+            return state;
+        }
         return action.run(state);
-    } else {
-        return state;
-    }
+    },
 };
 
 export const configureStore = (): Store => {
-    // Initial state
-    const state = initialState();
     return createStore(
-        combineReducers({ baseReducer, runnerReducer }),
-        { baseReducer: state, runnerReducer: state },
+        combineReducers(reducers),
+        { todoApp: initialTodoAppState() },
         devtoolsExtensionMiddleware(),
     );
 };
 
 // Returns the initial state
-const initialState = (): IState => new State();
+const initialTodoAppState = (): TodoAppState => new TodoAppState();
 
 // Middleware for chrom devtools redux extension
 const devtoolsExtensionMiddleware = (): any =>

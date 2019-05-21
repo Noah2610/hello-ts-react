@@ -8,7 +8,7 @@ export interface IAction {
 }
 
 export interface IRunnerAction extends IAction {
-    run: (state: IState) => IState;
+    run: <S extends IState>(state: S) => S;
 }
 
 // This action class is passed the reducer function to execute.
@@ -17,5 +17,5 @@ export interface IRunnerAction extends IAction {
 // the reducing logic iteself. Useful for quick and simple actions.
 class RunnerAction implements IRunnerAction {
     public type: IActionType;
-    public run: (state: IState) => IState;
+    public run: <S extends IState>(state: S) => S;
 }

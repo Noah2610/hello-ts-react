@@ -3,11 +3,9 @@ export interface ITodoEntry {
     name: string;
 }
 
-export interface IState {
-    todoEntries: Array<ITodoEntry>;
-}
+export interface IState {}
 
-export class State implements IState {
+export class TodoAppState implements IState {
     public todoEntries: Array<ITodoEntry>;
 
     public constructor(entries: Array<ITodoEntry> = []) {
