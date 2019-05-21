@@ -2,11 +2,14 @@ function joinPath(...paths) {
     return paths.join("/").replace(/\/{2,}/g, "/");
 }
 
+const TsConfigPathsPlugin = require("awesome-typescript-loader")
+    .TsConfigPathsPlugin;
+
 module.exports = {
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js",
-        path: joinPath(__dirname, "/dist"),
+        path: joinPath(__dirname, "dist"),
     },
 
     // Set environmet
@@ -18,6 +21,8 @@ module.exports = {
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+        // Resolve paths defined in tsconfig.json
+        plugins: [new TsConfigPathsPlugin()],
     },
 
     module: {

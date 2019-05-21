@@ -1,37 +1,54 @@
 {
-  "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended"
+    "defaultSeverity": "warning",
+    "extends": [
+        "tslint:recommended"
     ],
     "jsRules": true,
     "rules": {
-      "no-unused-variable": {
-        "severity": "warning"
-      },
-      "no-unused-expression": {
-        "severity": "warning"
-      },
-      "prefer-const": {
-        "severity": "warning"
-      },
-      "new-parens": {
-        "severity": "warning"
-      },
-      "interface-name": {
-        "severity": "warning",
-        "options": "never-prefix"
-      },
-      "one-variable-per-declaration": {
-        "severity": "off"
-      },
-      "member-access": {
-        "severity": "warning",
-        "options": ["check-accessor", "check-constructor"]
-      },
-      "trailing-comma": {
-          "severity": "warning",
-          "options": {"multiline": "always", "singleline": "never"}
-      }
+        "semicolon": {
+            "severity": "warning",
+            "options": "always"
+        },
+        "no-unused-variable": {
+            "severity": "warning"
+        },
+        "no-unused-expression": {
+            "severity": "warning"
+        },
+        "prefer-const": {
+            "severity": "warning"
+        },
+        "new-parens": {
+            "severity": "warning"
+        },
+        "interface-name": {
+            "severity": "warning",
+            "options": "never-prefix"
+        },
+        "one-variable-per-declaration": {
+            "severity": "off"
+        },
+        "member-access": {
+            "severity": "warning",
+            "options": ["check-accessor", "check-constructor"]
+        },
+        "trailing-comma": {
+            "severity": "warning",
+            "options": {"multiline": "always", "singleline": "never"}
+        },
+        "typedef": {
+            "severity": "error",
+            "options": ["call-signature", "arrow-call-signature", "parameter", "arrow-parameter"]
+        },
+        "ordered-imports": {
+            "severity": "warning",
+            "options": {
+                "import-sources-order": "lowercase-first",
+                "named-imports-order": "lowercase-first",
+                "module-source-path": "full",
+                "grouped-imports": true
+            }
+        }
     },
     "rulesDirectory": []
 }
