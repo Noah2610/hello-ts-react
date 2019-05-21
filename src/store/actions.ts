@@ -30,24 +30,23 @@ class RunnerAction implements IRunnerAction {
     }
 }
 
-export const newTodo = (name: string): IRunnerAction =>
-    new RunnerAction(
-        "NEW_TODO",
-        (state: TodoAppState): TodoAppState => {
-            let newId = 0;
-            state.todoEntries.forEach(
-                (entry: ITodoEntry): void => {
-                    if (entry.id > newId) {
-                        newId = entry.id;
-                    }
-                },
-            );
-            return new TodoAppState(
-                [].concat(state.todoEntries, {
-                    id: newId,
-                    name,
-                    completed: false,
-                }),
-            );
-        },
-    );
+export const newTodo = (name: string): IRunnerAction => ({
+    type: "NEW_TODO",
+    run: (state: TodoAppState): TodoAppState => {
+        let newId = 0;
+        state.todoEntries.forEach(
+            (entry: ITodoEntry): void => {
+                if (entry.id > newId) {
+                    newId = entry.id;
+                }
+            },
+        );
+        return new TodoAppState(
+            [].concat(state.todoEntries, {
+                id: newId,
+                name,
+                completed: false,
+            }),
+        );
+    },
+});
