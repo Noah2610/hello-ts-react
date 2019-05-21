@@ -1,6 +1,7 @@
 export interface ITodoEntry {
     id: number;
     name: string;
+    completed: boolean;
 }
 
 export interface IState {}

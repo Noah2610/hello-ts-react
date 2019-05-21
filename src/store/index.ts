@@ -20,6 +20,10 @@ const reducers = {
     },
 };
 
+export interface ICombinedState {
+    todoApp: TodoAppState;
+}
+
 export const configureStore = (): Store => {
     return createStore(
         combineReducers(reducers),

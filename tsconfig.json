@@ -9,7 +9,9 @@
         "baseUrl": "./",
         "paths": {
             "prelude": ["src/prelude"],
-            "prelude/*": ["src/prelude/*"]
+            "prelude/*": ["src/prelude/*"],
+            "store": ["src/store"],
+            "store/*": ["src/store/*"]
         }
     },
     "include": [
