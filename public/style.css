@@ -1,0 +1,18 @@
+.todo {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    font-style: normal;
+}
+
+.todo.todo--completed {
+    color: lightgray;
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+input[type=text] {
+    font-size: 24px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+}
