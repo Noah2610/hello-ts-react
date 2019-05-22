@@ -24,7 +24,7 @@ class Entries extends React.Component<IProps, {}> {
         const entries = this.getEntries();
         if (entries.length) {
             return (
-                <ul className="list-group">
+                <ul className="todo-entries list-group">
                     {entries.map((entry: ITodoEntry, i: number) => {
                         return this.renderEntry(i, entry);
                     })}
