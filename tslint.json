@@ -55,6 +55,9 @@
         "array-type": {
             "severity": "error",
             "options": "generic"
+        },
+        "object-literal-sort-keys": {
+            "severity": "off"
         }
     },
     "rulesDirectory": []

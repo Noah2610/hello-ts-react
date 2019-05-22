@@ -1,8 +1,10 @@
 import { IState, ITodoEntry, TodoAppState } from "/store/state";
 
 export enum ActionType {
-    NEW_TODO = "NEW_TODO",
-    TOGGLE_TODO_COMPLETED = "TOGGLE_TODO_COMPLETED",
+    NewTodo = "NEW_TODO",
+    ToggleTodoCompleted = "TOGGLE_TODO_COMPLETED",
+    FilterTodoByName = "FILTER_TODO_BY_NAME",
+    FilterTodoByCompleted = "FILTER_TODO_BY_COMPLETED",
 }
 
 export interface IAction {

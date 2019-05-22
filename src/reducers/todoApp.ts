@@ -10,8 +10,10 @@ export default (
         return state;
     }
 
+    const newState = new TodoAppState(state);
+
     switch (action.type) {
-        case ActionType.NEW_TODO: {
+        case ActionType.NewTodo: {
             const newId: number =
                 state.todoEntries.reduce(
                     (highest: number, entry: ITodoEntry): number => {
@@ -19,26 +21,34 @@ export default (
                     },
                     0,
                 ) + 1;
-            return new TodoAppState(
-                [].concat(state.todoEntries, {
-                    id: newId,
-                    name: action.payload,
-                    completed: false,
-                }),
-            );
+            newState.todoEntries.push({
+                id: newId,
+                name: action.payload,
+                completed: false,
+            });
+            break;
         }
-        case ActionType.TOGGLE_TODO_COMPLETED: {
-            return new TodoAppState(
-                state.todoEntries.map((entry: ITodoEntry) => {
-                    if (entry.id === action.payload) {
-                        return { ...entry, completed: !entry.completed };
-                    } else {
-                        return entry;
-                    }
-                }),
+
+        case ActionType.ToggleTodoCompleted: {
+            const targetEntry = newState.todoEntries.find(
+                (entry: ITodoEntry): boolean => {
+                    return entry.id === action.payload;
+                },
             );
+            targetEntry.completed = !targetEntry.completed;
+            break;
         }
-        default:
-            return state;
+
+        case ActionType.FilterTodoByName: {
+            newState.filter.name = action.payload;
+            break;
+        }
+
+        case ActionType.FilterTodoByCompleted: {
+            newState.filter.completed = action.payload;
+            break;
+        }
     }
+
+    return newState;
 };
