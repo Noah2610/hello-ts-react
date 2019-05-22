@@ -76,9 +76,9 @@ class Entries extends React.Component<IProps, {}> {
     }
 
     private nameFilterPasses(entryName: string, filterName: string): boolean {
-        // if (entryName === filterName || !!entryName.match(filterName)) {
-        //     return true;
-        // }
+        if (filterName.length === 0 || entryName === filterName) {
+            return true;
+        }
 
         const regexSqueezeWhitespace = /\s{2,}/g;
         const splitEntryName = entryName
@@ -89,10 +89,13 @@ class Entries extends React.Component<IProps, {}> {
             .split(" ")
             .some(
                 (filterWord: string): boolean => {
-                    return splitEntryName.some(
-                        (entryWord: string): boolean => {
-                            return !!entryWord.match(filterWord);
-                        },
+                    return (
+                        filterWord.length > 0 &&
+                        splitEntryName.some(
+                            (entryWord: string): boolean => {
+                                return !!entryWord.match(filterWord);
+                            },
+                        )
                     );
                 },
             );
