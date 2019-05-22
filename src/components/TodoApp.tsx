@@ -1,10 +1,10 @@
-import { React, ReactDOM, ReactElement } from "prelude/react";
-import { newTodo, IRunnerAction, IActionCreator } from "store/actions";
-import { connect } from "prelude/redux";
 import Entries from "./Entries";
+import { newTodo, ActionCreator, IAction } from "/actions";
+import { React, ReactDOM, ReactElement } from "/prelude/react";
+import { connect, Dispatch } from "/prelude/redux";
 
 interface IProps {
-    newTodo?: IActionCreator;
+    newTodo?: ActionCreator;
 }
 
 interface IState {
@@ -34,20 +34,21 @@ class TodoApp extends React.Component<IProps, IState> {
         );
     }
 
+    // TODO: Get rid of `any`
     private onInputChange(event: any): void {
         this.setState({ inputValue: event.target.value });
     }
 
     private onInputKeyDown(event: React.KeyboardEvent): void {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && this.state.inputValue) {
             this.props.newTodo(this.state.inputValue);
             this.setState({ inputValue: "" });
         }
     }
 }
 
-const mapDispatchToProps = (dispatch: any): object => ({
-    newTodo: (name: string): any => dispatch(newTodo(name)),
+const mapDispatchToProps = (dispatch: Dispatch): object => ({
+    newTodo: (name: string): IAction => dispatch(newTodo(name)),
 });
 
 export default connect(

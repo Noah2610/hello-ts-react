@@ -19,7 +19,7 @@ module.exports = env => {
             host: HOST,
             // liveReload: environment === "development",
             open: OPEN_BROWSER,
-            contentBase: __dirname,
+            contentBase: joinPath(__dirname, "public"),
         },
 
         // Re-build on file changes

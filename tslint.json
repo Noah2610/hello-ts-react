@@ -46,7 +46,7 @@
                 "import-sources-order": "lowercase-first",
                 "named-imports-order": "lowercase-first",
                 "module-source-path": "full",
-                "grouped-imports": true
+                "grouped-imports": false
             }
         },
         "only-arrow-functions": {

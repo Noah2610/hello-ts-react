@@ -1,4 +1,4 @@
 #!/bin/bash
-files=("index.html" "webpack.config.js" "README.md" ".gitignore" "package.json" "vimrc" "zshrc" "tsconfig.json" "tslint.json" ".prettierrc.json")
+files=("public/index.html" "public/style.css" "webpack.config.js" "README.md" ".gitignore" "package.json" "vimrc" "zshrc" "tsconfig.json" "tslint.json" ".prettierrc.json")
 files_find=($( find src/ -iname "*.ts" -o -iname "*.tsx" ))
 vim "${files[@]}" "${files_find[@]}"

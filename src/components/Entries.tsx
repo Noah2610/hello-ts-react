@@ -1,7 +1,7 @@
-import { React, ReactDOM, ReactElement } from "prelude/react";
-import { connect } from "prelude/redux";
-import { ICombinedState } from "store";
-import { ITodoEntry, TodoAppState } from "store/state";
+import { React, ReactDOM, ReactElement } from "/prelude/react";
+import { connect } from "/prelude/redux";
+import { ICombinedState } from "/store";
+import { ITodoEntry, TodoAppState } from "/store/state";
 
 import Entry from "./Entry";
 
@@ -41,10 +41,11 @@ class Entries extends React.Component<IProps, {}> {
     }
 }
 
-const mapStateToProps = (state: ICombinedState): IProps => {
-    return {
-        entries: state.todoApp.todoEntries,
-    };
-};
+const mapStateToProps = (state: ICombinedState): IProps => ({
+    entries: state.todoApp.todoEntries,
+});
 
-export default connect(mapStateToProps)(Entries);
+export default connect(
+    mapStateToProps,
+    null,
+)(Entries);
