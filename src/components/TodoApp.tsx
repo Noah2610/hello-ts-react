@@ -1,5 +1,6 @@
 import Entries from "./Entries";
-import { newTodo, ActionCreator, IAction } from "/actions";
+import { ActionCreator, IAction } from "/actions";
+import { newTodo } from "/actions/todoActions";
 import { React, ReactDOM, ReactElement } from "/prelude/react";
 import { connect, Dispatch } from "/prelude/redux";
 

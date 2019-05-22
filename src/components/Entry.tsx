@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { toggleTodoCompleted, ActionCreator, IAction } from "/actions";
+import { ActionCreator, IAction } from "/actions";
+import { toggleTodoCompleted } from "/actions/todoActions";
 import { React, ReactDOM, ReactElement } from "/prelude/react";
 import { connect, Dispatch } from "/prelude/redux";
 import { ITodoEntry } from "/store/state";
