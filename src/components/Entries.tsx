@@ -19,7 +19,7 @@ class Entries extends React.Component<IProps, {}> {
             return (
                 <ul className="list-group">
                     {this.props.entries.map((entry: ITodoEntry, i: number) => {
-                        this.renderEntry(i, entry);
+                        return this.renderEntry(i, entry);
                     })}
                 </ul>
             );

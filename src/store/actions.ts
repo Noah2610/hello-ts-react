@@ -8,8 +8,8 @@ export interface IAction {
 }
 
 export interface IRunnerAction extends IAction {
-    // run: <S extends IState>(state: S) => S;
-    run: (state: TodoAppState) => TodoAppState;
+    run: <S extends IState>(state: S) => S;
+    // run: (state: TodoAppState) => TodoAppState;
 }
 
 // This action class is passed the reducer function to execute.
@@ -18,21 +18,24 @@ export interface IRunnerAction extends IAction {
 // the reducing logic iteself. Useful for quick and simple actions.
 class RunnerAction implements IRunnerAction {
     public type: IActionType;
-    // run: <S extends IState>(state: S) => S;
-    public run: (state: TodoAppState) => TodoAppState;
+    public run: <S extends IState>(state: S) => S;
+    // public run: (state: TodoAppState) => TodoAppState;
 
     public constructor(
         type: IActionType,
-        run: (state: TodoAppState) => TodoAppState,
+        run: <S extends IState>(state: S) => S,
     ) {
         this.type = type;
         this.run = run;
     }
 }
 
+// `IActionCreator`s are functions that return anything that extends `IAction`.
+export type IActionCreator = <T>(arg: T) => IAction;
+
 export const newTodo = (name: string): IRunnerAction => ({
     type: "NEW_TODO",
-    run: (state: TodoAppState): TodoAppState => {
+    run: (state: any): any => {
         let newId = 0;
         state.todoEntries.forEach(
             (entry: ITodoEntry): void => {

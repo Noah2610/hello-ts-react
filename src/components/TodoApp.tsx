@@ -1,10 +1,10 @@
 import { React, ReactDOM, ReactElement } from "prelude/react";
-import { newTodo } from "store/actions";
+import { newTodo, IRunnerAction, IActionCreator } from "store/actions";
 import { connect } from "prelude/redux";
 import Entries from "./Entries";
 
 interface IProps {
-    newTodo: any;
+    newTodo?: IActionCreator;
 }
 
 interface IState {
