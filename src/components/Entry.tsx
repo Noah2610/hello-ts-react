@@ -41,8 +41,18 @@ class Entry extends React.Component<IProps, {}> {
     }
 }
 
+const checkboxSize = "24px";
 const Checkbox = styled.input.attrs({ type: "checkbox" })`
-    border-radius: 16px;
+    -webkit-appearance: none;
+    width: ${checkboxSize};
+    height: ${checkboxSize};
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    outline: none;
+    :checked {
+        background-color: lightgray;
+    }
 `;
 
 const mapDispatchToProps = (dispatch: Dispatch): object => ({

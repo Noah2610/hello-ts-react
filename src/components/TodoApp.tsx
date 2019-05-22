@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 import Entries from "./Entries";
 import { ActionCreator, IAction } from "/actions";
 import { newTodo } from "/actions/todoActions";
@@ -30,6 +32,7 @@ class TodoApp extends React.Component<IProps, IState> {
                     onKeyDown={this.onInputKeyDown}
                     value={this.state.inputValue}
                 />
+                <Spacing height="32px" />
                 <Entries />
             </div>
         );
@@ -47,6 +50,16 @@ class TodoApp extends React.Component<IProps, IState> {
         }
     }
 }
+
+interface ISpacingProps {
+    height?: string;
+    width?: string;
+}
+
+const Spacing = styled.div<ISpacingProps>`
+    width: ${(p: ISpacingProps): string => (p.width ? p.width : "0px")};
+    height: ${(p: ISpacingProps): string => (p.height ? p.height : "0px")};
+`;
 
 const mapDispatchToProps = (dispatch: Dispatch): object => ({
     newTodo: (name: string): IAction => dispatch(newTodo(name)),
