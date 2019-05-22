@@ -1,11 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import styled from "styled-components";
-
 import { Hello } from "./components/Hello";
 import TodoApp from "./components/TodoApp";
 import { configureStore } from "./store";
+import { Container } from "/components/styled";
 
 const init = (): void => {
     const store = configureStore();
@@ -22,10 +21,5 @@ const init = (): void => {
         document.getElementById("app"),
     );
 };
-
-const Container = styled.div.attrs({ className: "container" })`
-    border: 1px solid gray;
-    border-radius: 4px;
-`;
 
 init();

@@ -29,8 +29,12 @@ class Entries extends React.Component<IProps, {}> {
     }
 
     public renderEntry(index: number, entry: ITodoEntry): ReactElement {
+        let className = "list-group-item";
+        if (entry.completed) {
+            className += " disabled";
+        }
         return (
-            <li key={index} className="list-group-item">
+            <li key={index} className={className}>
                 <Entry
                     id={entry.id}
                     name={entry.name}

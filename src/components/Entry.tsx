@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { ActionCreator, IAction } from "/actions";
 import { toggleTodoCompleted } from "/actions/todoActions";
+import { Checkbox } from "/components/styled";
 import { React, ReactDOM, ReactElement } from "/prelude/react";
 import { connect, Dispatch } from "/prelude/redux";
 import { ITodoEntry } from "/store/state";
@@ -27,6 +27,7 @@ class Entry extends React.Component<IProps, {}> {
                 </div>
                 <div className="col-xs-4">
                     <Checkbox
+                        s="24px"
                         checked={this.props.completed}
                         onChange={this.onCheckboxChange}
                     />
@@ -40,20 +41,6 @@ class Entry extends React.Component<IProps, {}> {
         this.props.toggleCompleted(this.props.id);
     }
 }
-
-const checkboxSize = "24px";
-const Checkbox = styled.input.attrs({ type: "checkbox" })`
-    -webkit-appearance: none;
-    width: ${checkboxSize};
-    height: ${checkboxSize};
-    background-color: white;
-    border: 1px solid lightgray;
-    border-radius: 50%;
-    outline: none;
-    :checked {
-        background-color: lightgray;
-    }
-`;
 
 const mapDispatchToProps = (dispatch: Dispatch): object => ({
     toggleCompleted: (id: number): IAction => dispatch(toggleTodoCompleted(id)),
