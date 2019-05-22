@@ -76,6 +76,9 @@ class Entries extends React.Component<IProps, {}> {
     }
 
     private nameFilterPasses(entryName: string, filterName: string): boolean {
+        entryName = entryName.toLowerCase();
+        filterName = filterName.toLowerCase();
+
         if (filterName.length === 0 || entryName === filterName) {
             return true;
         }
