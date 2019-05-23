@@ -6,7 +6,7 @@ export interface IHelloProps {
     framework: string;
 }
 
-export class Hello extends React.Component<IHelloProps, {}> {
+export default class Hello extends React.Component<IHelloProps, {}> {
     public constructor(props: IHelloProps) {
         super(props);
     }
