@@ -14,6 +14,12 @@ export const newTodo = (name: string): IAction => ({
     payload: name,
 });
 
+// Deletes the todo entry with the given id.
+export const deleteTodo = (id: number): IAction => ({
+    type: ActionType.DeleteTodo,
+    payload: id,
+});
+
 // Toggle the `completed` state of the todo entry with the given id.
 export const toggleTodoCompleted = (id: number): IAction => ({
     type: ActionType.ToggleTodoCompleted,

@@ -20,7 +20,7 @@ export default (
 
         case ActionType.NewTodo: {
             const newId: number =
-                state.todoEntries.reduce(
+                newState.todoEntries.reduce(
                     (highest: number, entry: ITodoEntry): number => {
                         return entry.id > highest ? entry.id : highest;
                     },
@@ -31,6 +31,29 @@ export default (
                 name: action.payload,
                 completed: false,
             });
+            break;
+        }
+
+        case ActionType.DeleteTodo: {
+            let entryIndex = null;
+            // We use `find` here so looping stops when the target entry is found.
+            newState.todoEntries.find(
+                (entry: ITodoEntry, index: number): boolean => {
+                    if (entry.id === action.payload) {
+                        entryIndex = index;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+            );
+            // We have to explicitly check that `entryIndex` is not `null`,
+            // because `0` is false-y.
+            if (entryIndex !== null) {
+                newState.todoEntries.splice(entryIndex, 1);
+            } else {
+                console.log(action);
+            }
             break;
         }
 

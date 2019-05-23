@@ -1,5 +1,10 @@
 .todo-entries { }
 
+.todo-entry { }
+.todo-entry.todo-entry--completed {
+    background-color: #eeeeee;
+}
+
 .todo {
     color: black;
     font-size: 20px;
