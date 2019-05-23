@@ -13,6 +13,11 @@ export default (
     const newState = new TodoAppState(state);
 
     switch (action.type) {
+        case ActionType.SetTodoEntries: {
+            newState.todoEntries = action.payload;
+            break;
+        }
+
         case ActionType.NewTodo: {
             const newId: number =
                 state.todoEntries.reduce(

@@ -5,10 +5,11 @@
   "author": "Noah Rosenzweig <rosenzweig.noah@gmail.com>",
   "license": "MIT",
   "scripts": {
-      "start": "webpack-dev-server",
-      "build": "tsc"
+    "start": "webpack-dev-server",
+    "build": "tsc"
   },
   "dependencies": {
+    "lodash": "^4.17.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
@@ -16,6 +17,7 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.130",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
     "@types/react-redux": "^7.0.9",

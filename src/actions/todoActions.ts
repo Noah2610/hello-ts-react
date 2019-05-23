@@ -1,5 +1,12 @@
 import { ActionType, IAction } from ".";
-import { FilterCompleted } from "/store/state";
+import { FilterCompleted, ITodoEntry } from "/store/state";
+
+// Overwrites all todo entries with the given array.
+// This is used to load entries from localstorage.
+export const setTodoEntries = (entries: Array<ITodoEntry>): IAction => ({
+    type: ActionType.SetTodoEntries,
+    payload: entries,
+});
 
 // Create a new todo entry with the given name.
 export const newTodo = (name: string): IAction => ({
