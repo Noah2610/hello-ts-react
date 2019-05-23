@@ -1,5 +1,6 @@
 const TsConfigPathsPlugin = require("awesome-typescript-loader")
     .TsConfigPathsPlugin;
+const Dotenv = require("dotenv-webpack");
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "0.0.0.0";
@@ -61,6 +62,8 @@ module.exports = env => {
                 },
             ],
         },
+
+        plugins: [new Dotenv()],
 
         // When importing a module whose path matches one of the following, just
         // assume a corresponding global variable exists and use that instead.
