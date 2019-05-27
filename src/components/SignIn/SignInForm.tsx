@@ -1,9 +1,8 @@
 import { auth as firebaseAuth } from "firebase";
 import { History } from "history";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
-import { Container } from "/components/styled";
-import SignInLink from "/components/SignIn/SignInLink";
+import SignUpLink from "/components/SignUp/SignUpLink";
 import Routes from "/constants/Routes";
 import { React, ReactElement } from "/prelude/react";
 import { Firebase } from "/services/firebase";
@@ -17,22 +16,18 @@ interface IProps {
 }
 
 interface IState {
-    username: string; // TODO why do we have a `username`? It's not saved.
     email: string;
     password: string;
-    passwordConfirmation: string;
-    error?: any; // TODO
+    error?: any;
 }
 
 const INITIAL_STATE: IState = {
-    username: "",
     email: "",
     password: "",
-    passwordConfirmation: "",
     error: null,
 };
 
-class SignUpForm extends React.Component<IProps, IState> {
+class SignInForm extends React.Component<IProps, IState> {
     public constructor(props: IProps) {
         super(props);
         this.state = { ...INITIAL_STATE };
@@ -42,25 +37,11 @@ class SignUpForm extends React.Component<IProps, IState> {
     }
 
     public render(): ReactElement {
-        const {
-            username,
-            email,
-            password,
-            passwordConfirmation,
-            error,
-        } = this.state;
+        const { email, password, error } = this.state;
 
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        onChange={this.onChange}
-                        placeholder="Full Name"
-                        className="form-control"
-                    />
                     <input
                         type="text"
                         name="email"
@@ -77,31 +58,23 @@ class SignUpForm extends React.Component<IProps, IState> {
                         placeholder="Password"
                         className="form-control"
                     />
-                    <input
-                        type="password"
-                        name="passwordConfirmation"
-                        value={passwordConfirmation}
-                        onChange={this.onChange}
-                        placeholder="Confirm Password"
-                        className="form-control"
-                    />
 
                     <button
                         disabled={!this.isValid()}
                         type="submit"
                         className="btn btn-primary"
                     >
-                        Sign Up
+                        Log In
                     </button>
 
                     {error && (
-                        <div className="container alert alert-danger">
+                        <div className="alert alert-danger">
                             <p>{error.message}</p>
                         </div>
                     )}
                 </form>
 
-                <SignInLink />
+                <SignUpLink />
             </div>
         );
     }
@@ -109,7 +82,7 @@ class SignUpForm extends React.Component<IProps, IState> {
     // TODO: Remove any
     private onChange(event: any): void {
         const name = event.target.name;
-        const value = String(event.target.value);
+        const value = event.target.value;
         if (Object.keys(this.state).includes(name)) {
             // @ts-ignore
             this.setState({
@@ -122,9 +95,9 @@ class SignUpForm extends React.Component<IProps, IState> {
     private onSubmit(event: any): void {
         event.preventDefault();
 
-        const { username, email, password } = this.state;
+        const { email, password } = this.state;
         this.props.firebase
-            .createUser(email, password)
+            .signInUser(email, password)
             .then((authUser: UserCredential) => {
                 this.setState({ ...INITIAL_STATE });
                 this.props.history.push(Routes.Home);
@@ -136,17 +109,12 @@ class SignUpForm extends React.Component<IProps, IState> {
     }
 
     private isValid(): boolean {
-        const { username, email, password, passwordConfirmation } = this.state;
-        return (
-            password === passwordConfirmation &&
-            password.length > 0 &&
-            email.length > 0 &&
-            username.length > 0
-        );
+        const { email, password } = this.state;
+        return email.length > 0 && password.length > 0;
     }
 }
 
 export default compose(
     withRouter,
     withFirebase,
-)(SignUpForm);
+)(SignInForm);

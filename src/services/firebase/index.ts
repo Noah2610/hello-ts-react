@@ -3,6 +3,8 @@ import * as app from "firebase/app";
 import "firebase/auth";
 import { React, ReactElement } from "/prelude/react";
 
+type UserCredential = firebaseAuth.UserCredential;
+
 const config = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -28,13 +30,16 @@ export class Firebase {
     public createUser(
         email: string,
         password: string,
-    ): Promise<firebaseAuth.UserCredential> {
+    ): Promise<UserCredential> {
         return this.auth.createUserWithEmailAndPassword(email, password);
     }
 
     // Sign in a user with the given email and password strings.
-    public signInUser(email: string, password: string): void {
-        this.auth.signInWithEmailAndPassword(email, password);
+    public signInUser(
+        email: string,
+        password: string,
+    ): Promise<UserCredential> {
+        return this.auth.signInWithEmailAndPassword(email, password);
     }
 
     // Signs out the currently logged in user.

@@ -20,8 +20,11 @@ const Navigation = (props: {}): ReactElement => {
                 <li className={classNameForPath(Routes.Home)}>
                     <NavLink to={Routes.Home}>Home</NavLink>
                 </li>
+                <li className={classNameForPath(Routes.SignIn)}>
+                    <NavLink to={Routes.SignIn}>Sign In</NavLink>
+                </li>
                 <li className={classNameForPath(Routes.SignUp)}>
-                    <NavLink to={Routes.SignUp}>SignUp</NavLink>
+                    <NavLink to={Routes.SignUp}>Sign Up</NavLink>
                 </li>
                 <li className={classNameForPath(Routes.TodoApp)}>
                     <NavLink to={Routes.TodoApp}>Todos</NavLink>

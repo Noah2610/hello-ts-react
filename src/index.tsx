@@ -6,6 +6,7 @@ import { configureStore } from "./store";
 import Navigation from "/components/Navigation";
 import Routes from "/constants/Routes";
 import HelloPage from "/pages/Hello";
+import SignInPage from "/pages/SignInPage";
 import SignUpPage from "/pages/SignUpPage";
 import TodoAppPage from "/pages/TodoApp";
 import { Provider as FirebaseProvider } from "/services/firebase/context";
@@ -21,6 +22,7 @@ const init = (): void => {
                 <BrowserRouter>
                     <Navigation />
                     <Route exact path={Routes.Home} component={HelloPage} />
+                    <Route path={Routes.SignIn} component={SignInPage} />
                     <Route path={Routes.SignUp} component={SignUpPage} />
                     <Route path={Routes.TodoApp} component={TodoAppPage} />
                 </BrowserRouter>
