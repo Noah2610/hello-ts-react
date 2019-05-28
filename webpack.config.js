@@ -21,6 +21,8 @@ module.exports = env => {
             // liveReload: environment === "development",
             open: OPEN_BROWSER,
             contentBase: joinPath(__dirname, "public"),
+            // Fallback to index.html for routes not matching files
+            historyApiFallback: true,
         },
 
         // Re-build on file changes
