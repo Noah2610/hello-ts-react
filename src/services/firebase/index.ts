@@ -1,9 +1,6 @@
-import { auth as firebaseAuth } from "firebase";
-import * as app from "firebase/app";
 import "firebase/auth";
+import { app, Auth, User, UserCredential } from "/prelude/firebase";
 import { React, ReactElement } from "/prelude/react";
-
-type UserCredential = firebaseAuth.UserCredential;
 
 const config = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -16,7 +13,7 @@ const config = {
 };
 
 export class Firebase {
-    private auth: firebaseAuth.Auth;
+    private auth: Auth;
 
     public constructor() {
         app.initializeApp(config);
@@ -25,6 +22,11 @@ export class Firebase {
     }
 
     // Auth API
+
+    // Returns the currently signed in user, or `null` if there is none.
+    public user(): User {
+        return this.auth.currentUser;
+    }
 
     // Create a new user with the given email and password strings.
     public createUser(
