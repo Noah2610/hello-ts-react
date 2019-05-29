@@ -14,7 +14,7 @@ export const configureStore = (): Store => {
     );
 };
 
-// Middleware for chrom devtools redux extension
+// Middleware for chrome devtools redux extension
 const devtoolsExtensionMiddleware = (): any =>
     (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
     (window as any).__REDUX_DEVTOOLS_EXTENSION__();
